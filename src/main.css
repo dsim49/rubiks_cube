@@ -1,0 +1,24 @@
+body {
+    display: flex;
+    margin-right: 0;
+}
+
+.main_page {
+    flex: 1;
+}
+
+.debug_panel {
+    display: flex;
+    flex-direction: column;
+    background-color: lightgray;
+    border: 1px solid black;
+    padding: 10px;
+    width: 300px;
+}
+
+#last_event_disp_container {
+    flex: 1;
+    padding-left: 10px;
+    background-color: white;
+    border: 1px solid black;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/main.css">
+    <title>Rubik</title>
+</head>
+<body>
+    <div class="main_page">
+        <p>Main Page</p>
+    </div>
+    <div class="debug_panel">
+        <div id="generic_debug_info">
+            <div>
+                <p style="
+                    display: inline-block;
+                    width: 100px;
+                ">X-coordinate:</p>
+                <p style="
+                    display: inline-block;
+                " id="x-disp">NaN</p>
+            </div>
+            <div>
+                <p style="
+                    display: inline-block;
+                    width: 100px;
+                ">Y-coordinate:</p>
+                <p style="
+                    display: inline-block;
+                " id="y-disp">NaN</p>
+            </div>
+        </div>
+        <div id="last_event_disp_container">
+            <h3>The most recent event:</h3>
+            <p id="last_event_disp">Placeholder</p>
+        </div>
+    </div>
+    <script src="src/main.js"></script>
+</body>
+</html>

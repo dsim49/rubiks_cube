@@ -9,3 +9,7 @@ Step 2: Add a flowchart showing architecture. First draft has two layers, presen
 
 12/21/2023
 Step 3: I don't know how to make a user interface, so we will work on that first since it will be hardest. Might be several commits for this step.
+
+12/25/2023
+Adding chatgpt development tools (tools to help me develop with the help of chatgpt) like a script to concatenate everything so I can 
+copy and paste the entire code to chatgpt prompt. Also adding some stuff to the code itself.

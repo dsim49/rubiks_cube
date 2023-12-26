@@ -6,11 +6,12 @@
     <link rel="stylesheet" href="src/main.css">
     <title>Rubik</title>
 </head>
-<body>
-    <div class="main_page">
+<body class="normal-mode">
+    <div class="main-page">
         <p>Main Page</p>
+        <button style="display: block;" onclick="toggleDebugMode()">Toggle Debug Mode</button>
     </div>
-    <div class="debug_panel">
+    <div class="debug-panel">
         <div id="generic_debug_info">
             <div>
                 <p style="
@@ -19,7 +20,7 @@
                 ">X-coordinate:</p>
                 <p style="
                     display: inline-block;
-                " id="x-disp">NaN</p>
+                " id="x_disp">NaN</p>
             </div>
             <div>
                 <p style="
@@ -28,9 +29,20 @@
                 ">Y-coordinate:</p>
                 <p style="
                     display: inline-block;
-                " id="y-disp">NaN</p>
+                " id="y_disp">NaN</p>
+            </div>
+            <div>
+                <p style="
+                    display: inline-block;
+                    width: 100px;
+                ">Mouse Button:</p>
+                <p style="
+                    display: inline-block;
+                " id="mouse_button_disp">NaN</p>
             </div>
         </div>
+
+
         <div id="last_event_disp_container">
             <h3>The most recent event:</h3>
             <p id="last_event_disp">Placeholder</p>

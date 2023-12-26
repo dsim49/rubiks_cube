@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/main.css">
+    <title>Rubik</title>
+<style>body {
+    display: flex;
+    margin-right: 0;
+}
+
+.main-page {
+    display: block;
+    flex: 1;
+}
+
+/* === DEBUG STUFF === */
+/* Normal Mode Styles */
+.normal-mode {
+    background-color: antiquewhite;
+}
+
+/* Debug Mode Styles      */
+.debug-mode {
+    position: relative;
+}
+
+.debug-panel {
+    display: none;
+    flex-direction: column;
+    background-color: lightgray;
+    border: 1px solid black;
+    padding: 10px;
+    width: 300px;
+}
+
+#last_event_disp_container {
+    flex: 1;
+    padding-left: 10px;
+    background-color: white;
+    border: 1px solid black;
+}</style></head>
+<body class="normal-mode">
+    <div class="main-page">
+        <p>Main Page</p>
+        <button style="display: block;" onclick="toggleDebugMode()">Toggle Debug Mode</button>
+    </div>
+    <div class="debug-panel">
+        <div id="generic_debug_info">
+            <div>
+                <p style="
+                    display: inline-block;
+                    width: 100px;
+                ">X-coordinate:</p>
+                <p style="
+                    display: inline-block;
+                " id="x_disp">NaN</p>
+            </div>
+            <div>
+                <p style="
+                    display: inline-block;
+                    width: 100px;
+                ">Y-coordinate:</p>
+                <p style="
+                    display: inline-block;
+                " id="y_disp">NaN</p>
+            </div>
+            <div>
+                <p style="
+                    display: inline-block;
+                    width: 100px;
+                ">Mouse Button:</p>
+                <p style="
+                    display: inline-block;
+                " id="mouse_button_disp">NaN</p>
+            </div>
+        </div>
+
+
+        <div id="last_event_disp_container">
+            <h3>The most recent event:</h3>
+            <p id="last_event_disp">Placeholder</p>
+        </div>
+    </div>
+    <script>const last_event_disp = document.getElementById("last_event_disp");
+
+// === Debug Panel Const Items ===
+const x_disp = document.getElementById("x_disp");
+const y_disp = document.getElementById("y_disp");
+const mouse_button_disp = document.getElementById("mouse_button_disp");
+
+document.body.addEventListener("mousedown", interpret_input)
+
+function interpret_input(event) {
+    if (event.type == "mousedown")
+    {
+        last_event_disp.textContent = "Clicked on mainpage!";
+        x_disp.textContent = event.pageX;
+        y_disp.textContent = event.pageY;
+
+        // Check for the mouse button and call the appropriate function
+        switch (event.button) {
+            case 0: // Left mouse button
+                mouse_button_disp.textContent = "Left Mouse Button";
+                turn(event);
+                break;
+            case 1: // Middle mouse button
+                mouse_button_disp.textContent = "Middle Mouse Button";
+                startRotate(event);
+                break;
+            case 2: // Right mouse button
+                mouse_button_disp.textContent = "Right Mouse Button";
+                // Do nothing special for the right mouse button
+                break;
+            default:
+                mouse_button_disp.textContent = "Unknown Mouse Button";
+                break;
+        }
+    }
+
+    else if (event.type == "mouseup" && event.button == 1)
+    {
+        mouse_button_disp.textContent = "Middle Mouse Button";
+        stopRotate(event);
+    }
+}
+
+function startRotate(event) {
+    rotateInterval = setInterval(() => rotate(event), 1000 / 30); // 30Hz loop
+}
+
+function stopRotate(event) {
+    last_event_disp.textContent = "Stopped rotating.";
+    clearInterval(rotateInterval);
+}
+
+function rotate(event) {
+    last_event_disp.textContent = "Rotating..."
+    x_disp.textContent = event.pageX;
+    y_disp.textContent = event.pageY;
+}
+
+function turn(event) {
+    last_event_disp.textContent = "Turning..."
+}
+
+// =============== Debug Panel Function ====================
+function toggleDebugMode() {
+    const debugPanel = document.querySelector('.debug-panel');
+    const body = document.body;
+
+    if (body.classList.contains('debug-mode')) {
+        body.classList.remove('debug-mode');
+        debugPanel.style.display = 'none';
+    } else {
+        body.classList.add('debug-mode');
+        debugPanel.style.display = 'flex';
+    }
+}</script>
+</body>
+</html>

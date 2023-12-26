@@ -3,12 +3,24 @@ body {
     margin-right: 0;
 }
 
-.main_page {
+.main-page {
+    display: block;
     flex: 1;
 }
 
-.debug_panel {
-    display: flex;
+/* === DEBUG STUFF === */
+/* Normal Mode Styles */
+.normal-mode {
+    background-color: antiquewhite;
+}
+
+/* Debug Mode Styles      */
+.debug-mode {
+    position: relative;
+}
+
+.debug-panel {
+    display: none;
     flex-direction: column;
     background-color: lightgray;
     border: 1px solid black;
